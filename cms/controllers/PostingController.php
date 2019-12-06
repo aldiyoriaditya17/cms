@@ -119,14 +119,9 @@ class PostingController extends Controller
     }
      public function actionDetail($id)
     {
-         $data= (new \yii\db\Query())
-                    ->select(['*'])
-                    ->from('posting_detail')
-                    ->leftjoin('posting','posting.id_posting=posting_detail.id_posting')
-                    ->where('=','posting_detail.id_posting',$id)
-                    ->orderBy('posting.created_at desc')
-                    ->limit(3)
-                    ->all();
+        
+        $db= yii::$app->db;
+         $data= $db->createCommand('SELECT * from Posting_detail join posting on posting.id_posting=posting_detail.id_posting where posting_detail.id_posting="'.$id.'"')->queryAll();
         $this->layout = "adminlte";
         return $this->render('detailposting', [
             'data' => $data
