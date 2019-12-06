@@ -72,7 +72,7 @@ class SiteController extends Controller
                     ->from('posting_detail')
                     ->leftjoin('posting','posting.id_posting=posting_detail.id_posting')
                     ->where('posting.type_posting=1')
-                    ->orderBy('posting.comment_count')
+                    ->orderBy('posting.comment_count desc')
                     ->limit(3)
                     ->all();
             $like_counts= (new \yii\db\Query())
@@ -80,7 +80,7 @@ class SiteController extends Controller
                     ->from('posting_detail')
                     ->leftjoin('posting','posting.id_posting=posting_detail.id_posting')
                     ->where('posting.type_posting=1')
-                    ->orderBy('posting.like_count')
+                    ->orderBy('posting.like_count desc')
                     ->limit(3)
                     ->all();
             $views_counts= (new \yii\db\Query())
@@ -88,7 +88,7 @@ class SiteController extends Controller
                     ->from('posting_detail')
                     ->leftjoin('posting','posting.id_posting=posting_detail.id_posting')
                     ->where('posting.type_posting=1')
-                    ->orderBy('posting.views_count')
+                    ->orderBy('posting.views_count desc')
                     ->limit(3)
                     ->all();
             $sql = Posting::find()->all();

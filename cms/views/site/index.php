@@ -110,7 +110,7 @@ $baseUrl = $asset->baseUrl;
                            <?php
                          }
                           ?>
-                           
+                           </div>
                     </div>
                       <div class="col-md-12">
                      <h3>Most Likes</h3>

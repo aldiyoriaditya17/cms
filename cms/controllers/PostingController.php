@@ -4,6 +4,8 @@ namespace cms\controllers;
 
 use Yii;
 use cms\models\Posting;
+use cms\models\PostingComment;
+use cms\models\PostingLike;
 use cms\models\PostingSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -130,9 +132,9 @@ class PostingController extends Controller
 
      public function actionListlike($id)
     {
-        $data=PostingLike::find()
-        ->where('=','id_posting',$id)
-        ->all();
+       $data=PostingComment::find()
+           ->where(['=','id_posting',$id])
+           ->all();
           $this->layout = "adminlte";
         return $this->render('listlike', [
             'data' => $data,
@@ -140,10 +142,10 @@ class PostingController extends Controller
     }
      public function actionListcomment($id)
     {
-      $data=PostingComment::find()
-        ->where('=','id_posting',$id)
-        ->all();
-          $this->layout = "adminlte";
+    $data=PostingComment::find()
+           ->where(['=','id_posting',$id])
+           ->all();
+             $this->layout = "adminlte";
         return $this->render('listcomment', [
             'data' => $data,
         ]);
