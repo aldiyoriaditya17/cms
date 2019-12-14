@@ -3,6 +3,10 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
+if (class_exists('ramosisw\CImaterial\web\MaterialAsset')) {
+    ramosisw\CImaterial\web\MaterialAsset::register($this);
+}
+
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
